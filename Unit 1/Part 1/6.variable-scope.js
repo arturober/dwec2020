@@ -1,3 +1,5 @@
+'use strict'
+
 let v = 10;
 
 function foo() {
