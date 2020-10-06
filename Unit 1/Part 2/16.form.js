@@ -7,6 +7,7 @@ function sendForm(e) {
     e.preventDefault();
     console.log(`Text: ${form.text.value}`);
     console.log(`Option selected: ${form.select.value}`);
+    console.log(form.hobbies);
     console.log(
         Array.from(form.hobbies)
             .filter(i => i.checked)
