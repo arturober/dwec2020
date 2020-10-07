@@ -12,9 +12,16 @@ function addAsync(n1, n2) {
     });
 }
 
-let promise = addAsync(2, 4);
-promise.then(res => {
-    console.log(res);
-}).catch(error => console.error(error)); // 9
+addAsync("hola", 4)
+    .catch(error => {
+        console.error(error)
+        return 0;
+    }) // 9
+    .then(res => {
+        console.log(res);
+        return addAsync(res, 10);
+    })
+    .then(res => console.log(`Resultado + 10: ${res}`));
+
 
 
