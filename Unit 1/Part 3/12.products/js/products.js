@@ -18,7 +18,7 @@ function convertBase64(file) {
     });
 }
 
-function addProduct(e) {
+async function addProduct(e) {
     e.preventDefault();
     let prod = {
         name: productForm.name.value,
@@ -26,19 +26,22 @@ function addProduct(e) {
         photo: imagePreview.src
     };
 
-    fetch(`${SERVER}/products`, {
-        method: 'POST',
-        body: JSON.stringify(prod),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(resp => resp.json())
-    .then(data => appendProductHTML(data.product))
-    .catch(e => console.error(e));        
+    try {
+        let resp = await fetch(`${SERVER}/products`, {
+            method: 'POST',
+            body: JSON.stringify(prod),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        let data = await resp.json();
+        appendProductHTML(data.product);    
 
-    productForm.reset();
-    imagePreview.src = "";
+        productForm.reset();
+        imagePreview.src = "";
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 function appendProductHTML({id, description, name, photo}) {
@@ -61,15 +64,13 @@ function appendProductHTML({id, description, name, photo}) {
     let btnDelete = document.createElement("button");
     btnDelete.classList.add("delete");
     btnDelete.innerText = "Delete";
-    btnDelete.addEventListener("click", e => {
-        fetch(`${SERVER}/products/` + id, {
+    btnDelete.addEventListener("click", async e => {
+        let resp = await fetch(`${SERVER}/products/` + id, {
             method: 'DELETE'
-        })
-        .then(resp => {
-            if(resp.ok) {
-                tr.remove();
-            }
         });
+        if(resp.ok) {
+            tr.remove();
+        }
     });
     tdDelete.appendChild(btnDelete);
     tr.appendChild(tdDelete);
@@ -77,12 +78,14 @@ function appendProductHTML({id, description, name, photo}) {
     tableProducts.querySelector("tbody").appendChild(tr);
 }
 
-function getProducts() {
-    fetch(SERVER + '/products')
-        .then(resp => resp.json())
-        .then(data => {
-            data.products.forEach(p => appendProductHTML(p));
-        });
+async function getProducts() {
+    try{
+        let resp = await fetch(SERVER + '/products');
+        let data = await resp.json();
+        data.products.forEach(p => appendProductHTML(p));
+    } catch(e) {
+        console.error("Error loading products: " + e);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", e => {
