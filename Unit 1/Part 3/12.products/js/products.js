@@ -1,7 +1,5 @@
 "use strict";
 
-const SERVER = 'http://arturober.com:5005';
-
 let imagePreview = null;
 let productForm = null;
 let tableProducts = null;
@@ -20,22 +18,15 @@ function convertBase64(file) {
 
 async function addProduct(e) {
     e.preventDefault();
-    let prod = {
+    let prod = new Product({
         name: productForm.name.value,
         description: productForm.description.value,
         photo: imagePreview.src
-    };
+    });
 
     try {
-        let resp = await fetch(`${SERVER}/products`, {
-            method: 'POST',
-            body: JSON.stringify(prod),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        let data = await resp.json();
-        appendProductHTML(data.product);    
+        prod = await prod.post();
+        appendProductHTML(prod);    
 
         productForm.reset();
         imagePreview.src = "";
@@ -44,45 +35,15 @@ async function addProduct(e) {
     }
 }
 
-function appendProductHTML({id, description, name, photo}) {
-    let tr = document.createElement("tr");
-    let tdPhoto = document.createElement("td");
-    let img = document.createElement("img");
-    img.src = SERVER + '/' + photo;
-    tdPhoto.appendChild(img);
-    tr.appendChild(tdPhoto);
-
-    let tdName = document.createElement("td");
-    tdName.innerText = name;
-    tr.appendChild(tdName);
-
-    let tdDesc = document.createElement("td");
-    tdDesc.innerText = description;
-    tr.appendChild(tdDesc);
-
-    let tdDelete = document.createElement("td");
-    let btnDelete = document.createElement("button");
-    btnDelete.classList.add("delete");
-    btnDelete.innerText = "Delete";
-    btnDelete.addEventListener("click", async e => {
-        let resp = await fetch(`${SERVER}/products/` + id, {
-            method: 'DELETE'
-        });
-        if(resp.ok) {
-            tr.remove();
-        }
-    });
-    tdDelete.appendChild(btnDelete);
-    tr.appendChild(tdDelete);
-
+function appendProductHTML(prod) {
+    let tr = prod.toHtml();
     tableProducts.querySelector("tbody").appendChild(tr);
 }
 
 async function getProducts() {
     try{
-        let resp = await fetch(SERVER + '/products');
-        let data = await resp.json();
-        data.products.forEach(p => appendProductHTML(p));
+        let products = await Product.getAllProducts();
+        products.forEach(p => appendProductHTML(p));
     } catch(e) {
         console.error("Error loading products: " + e);
     }

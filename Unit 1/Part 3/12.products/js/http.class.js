@@ -21,6 +21,6 @@ class Http {
     }
 
     static delete(url) {
-        return Http.ajax('DLEETE', url);
+        return Http.ajax('DELETE', url);
     }
 }
