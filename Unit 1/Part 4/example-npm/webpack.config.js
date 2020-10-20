@@ -31,12 +31,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: '../index.html',
-            chunks: ['index', 'commons']
+            chunks: ['index', 'commons', 'vendors']
         }), // Generates default index.html
         new HtmlWebpackPlugin({  // Also generate a test.html
             filename: 'index2.html',
             template: '../index2.html',
-            chunks: ['index2', 'commons']
+            chunks: ['index2', 'commons', 'vendors']
         })
     ],
     optimization: {
@@ -47,7 +47,13 @@ module.exports = {
                     name: "commons", // Generará commons.bundle.js
                     minChunks: 2, // Mínimo archivos deben importar módulo para que se incluya aquí
                     minSize: 0 // Tamaño mínimo del código compartido para que se genere el trozo
+                },
+                vendors: { // Esto generará vendors.bundle.js
+                    test: /[\\/]node_modules[\\/]/, // sólo código dentro de node_modules
+                    name: "vendors", // Generará vendors.bundle.js
+                    chunks: 'all'
                 }
+                    
             }
         }
     }
