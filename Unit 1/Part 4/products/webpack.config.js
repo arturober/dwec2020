@@ -1,8 +1,9 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
     devServer: {
-        contentBase: __dirname, // Raíz del servidor(directorio del proyecto)
+        contentBase: path.join(__dirname, 'dist'), // Raíz del servidor(directorio del proyecto)
         publicPath: '/dist/', // Ruta donde están los bundles generados
         compress: true, // Habilitar compresión gzip
         port: 8080 // Puerto donde ejecutaremos el servidor
@@ -17,7 +18,33 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: path.join(__dirname, 'dist')
-    } // dist/product.bundle
-        
-        
+    }, // dist/product.bundle
+    module: {
+        rules: [
+            { test: /\.handlebars$/, loader: "handlebars-loader" },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: '../products.html',
+            chunks: ['products', 'vendors']
+        }), // Generates default index.html
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendors: { // Esto generará vendors.bundle.js
+                    test: /[\\/]node_modules[\\/]/, // sólo código dentro de node_modules
+                    name: "vendors", // Generará vendors.bundle.js
+                    chunks: 'all'
+                }
+                    
+            }
+        }
+    }  
 }

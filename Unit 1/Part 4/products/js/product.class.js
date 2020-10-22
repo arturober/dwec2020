@@ -1,5 +1,6 @@
 import {SERVER} from './constants';
 import {Http} from './http.class';
+import productTemplate from '../templates/product.handlebars';
 
 export class Product {
     constructor({ id, name, description, photo }) { // Receives JSON object
@@ -25,31 +26,19 @@ export class Product {
 
     toHtml() {
         let tr = document.createElement('tr');
-        let tdPhoto = document.createElement('td');
-        let img = document.createElement('img');
-        img.src = SERVER + '/' + this.photo;
-        tdPhoto.appendChild(img);
-        tr.appendChild(tdPhoto);
 
-        let tdName = document.createElement('td');
-        tdName.innerText = this.name;
-        tr.appendChild(tdName);
-
-        let tdDesc = document.createElement('td');
-        tdDesc.innerText = this.description;
-        tr.appendChild(tdDesc);
-
-        let tdDelete = document.createElement('td');
-        let btnDelete = document.createElement('button');
-        btnDelete.classList.add('delete');
-        btnDelete.innerText = 'Delete';
+        let prodHtml = productTemplate({
+            ...this, 
+            photo: SERVER + '/' + this.photo
+        });
+        tr.innerHTML = prodHtml;
+        
+        let btnDelete = tr.querySelector('button.delete');
         btnDelete.addEventListener('click', async e => {
             await this.delete();
             tr.remove();
         });
-        tdDelete.appendChild(btnDelete);
-        tr.appendChild(tdDelete);
-
+        
         return tr;
     }
 }

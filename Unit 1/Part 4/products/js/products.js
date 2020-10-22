@@ -1,4 +1,5 @@
 import {Product} from './product.class';
+import '../products.css';
 
 let imagePreview = null;
 let productForm = null;
