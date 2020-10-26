@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'), // Raíz del servidor(directorio del proyecto)
-        publicPath: '/dist/', // Ruta donde están los bundles generados
+        publicPath: '/', // Ruta donde están los bundles generados
         compress: true, // Habilitar compresión gzip
         port: 8080 // Puerto donde ejecutaremos el servidor
     },
@@ -14,10 +14,12 @@ module.exports = {
     context: path.join(__dirname, 'js'),
     entry: {
         products: './products.js',
+        'add-product': './add-product.js',
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.join(__dirname, 'dist')
+        path: path.join(__dirname, 'dist'),
+        publicPath: '/',
     }, // dist/product.bundle
     module: {
         rules: [
@@ -33,6 +35,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: '../products.html',
             chunks: ['products', 'vendors']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'add-product.html',
+            template: '../add-product.html',
+            chunks: ['add-product', 'vendors']
         }), // Generates default index.html
     ],
     optimization: {
