@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'), // Raíz del servidor(directorio del proyecto)
-        publicPath: '/dist/', // Ruta donde están los bundles generados
+        publicPath: '/', // Ruta donde están los bundles generados
         compress: true, // Habilitar compresión gzip
         port: 8080 // Puerto donde ejecutaremos el servidor
     },
@@ -18,7 +18,8 @@ module.exports = {
     },
     output: {
         filename: '[name].bundle.js',
-        path: path.join(__dirname, 'dist')
+        path: path.join(__dirname, 'dist'),
+        publicPath: '/',
     }, // dist/product.bundle
     module: {
         rules: [
