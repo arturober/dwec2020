@@ -10,17 +10,19 @@ module.exports = {
     },
     mode: 'development',
     devtool: 'source-map',
+    // mode: 'production',
     context: path.join(__dirname, 'js'),
     entry: {
-        index: './index.js',
-        index2: './index2.js',
+        products: './products.js',
+        'add-product': './add-product.js',
     },
     output: {
         filename: '[name].bundle.js',
         path: path.join(__dirname, 'dist')
-    },
+    }, // dist/product.bundle
     module: {
         rules: [
+            { test: /\.handlebars$/, loader: "handlebars-loader" },
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
@@ -30,24 +32,18 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: '../index.html',
-            chunks: ['index', 'commons', 'vendors']
+            template: '../products.html',
+            chunks: ['products', 'vendors']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'add-product.html',
+            template: '../add-product.html',
+            chunks: ['add-product', 'vendors']
         }), // Generates default index.html
-        new HtmlWebpackPlugin({  // Also generate a test.html
-            filename: 'index2.html',
-            template: '../index2.html',
-            chunks: ['index2', 'commons', 'vendors']
-        })
     ],
     optimization: {
         splitChunks: {
             cacheGroups: {
-                commons: {
-                    chunks: "all",
-                    name: "commons", // Generará commons.bundle.js
-                    minChunks: 2, // Mínimo archivos deben importar módulo para que se incluya aquí
-                    minSize: 0 // Tamaño mínimo del código compartido para que se genere el trozo
-                },
                 vendors: { // Esto generará vendors.bundle.js
                     test: /[\\/]node_modules[\\/]/, // sólo código dentro de node_modules
                     name: "vendors", // Generará vendors.bundle.js
@@ -56,7 +52,5 @@ module.exports = {
                     
             }
         }
-    }
-
-
-};
+    }  
+}
