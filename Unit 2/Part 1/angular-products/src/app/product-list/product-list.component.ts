@@ -9,6 +9,8 @@ import { Product } from '../interfaces/product';
 export class ProductListComponent implements OnInit {
   title = 'Product list';
   headers = { image: 'Image', description: 'Product', price: 'Price', available: 'Available' };
+  showImages = true;
+  search = '';
   products: Product[] = [{
     id: 1,
     description: 'SSD hard drive',
@@ -44,5 +46,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  toggleImages(): void {
+    this.showImages = !this.showImages;
+  }
 }

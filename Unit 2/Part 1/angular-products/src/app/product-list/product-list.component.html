@@ -3,11 +3,28 @@
     {{title}}
   </div>
   <div class="card-block">
+    <form class="form mt-3">
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 text-sm-right" for="filterDesc">Filter:</label>
+        <div class="col-sm-5">
+          <input type="text" [(ngModel)]="search" class="form-control" name="filterDesc" id="filterDesc"
+            placeholder="Filter...">
+        </div>
+        <label class="col-form-label col-sm-5">
+          Filtered by: {{search}}</label>
+      </div>
+    </form>
+
     <div class="table-responsive" *ngIf="products.length">
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>{{headers.image}}</th>
+            <th>
+              <button class="btn btn-sm" [ngClass]="{'btn-danger': showImages, 'btn-success': !showImages}"
+                (click)="toggleImages()">
+                {{showImages ? 'Hide' : 'Show'}} images
+              </button>
+            </th>
             <th>{{headers.description}}</th>
             <th>{{headers.price}}</th>
             <th>{{headers.available}}</th>
@@ -15,10 +32,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let product of products; let isEven = even">
-            <td><img [src]="product.imageUrl" alt=""></td>
+            <td><img [src]="product.imageUrl" alt="" *ngIf="showImages"></td>
             <td>{{product.description}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.available}}</td>
+            <td>{{product.price | currency:'EUR'}}</td>
+            <td>{{product.available | date:'dd/MM/yyyy'}}</td>
           </tr>
         </tbody>
       </table>
