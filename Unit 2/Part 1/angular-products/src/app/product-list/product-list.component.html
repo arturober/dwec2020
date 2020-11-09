@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    {{title}}
+  </div>
+  <div class="card-block">
+    <div class="table-responsive" *ngIf="products.length">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>{{headers.image}}</th>
+            <th>{{headers.description}}</th>
+            <th>{{headers.price}}</th>
+            <th>{{headers.available}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let isEven = even">
+            <td><img [src]="product.imageUrl" alt=""></td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.available}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
