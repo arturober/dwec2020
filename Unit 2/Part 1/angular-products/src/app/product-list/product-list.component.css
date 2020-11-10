@@ -13,3 +13,7 @@ td:first-child img {
 .green {
   color: green;
 }
+
+.product-img {
+  max-height: 80px;
+}
