@@ -1,0 +1,19 @@
+td {
+  vertical-align:middle;
+}
+
+td:first-child img {
+  height: 40px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.product-img {
+  max-height: 80px;
+}
