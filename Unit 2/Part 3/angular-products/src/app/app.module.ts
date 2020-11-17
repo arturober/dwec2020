@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -20,7 +21,8 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule // HttpClient (Service -> @Injectable)
   ],
   providers: [],
   bootstrap: [AppComponent]
