@@ -1,7 +1,9 @@
 <div class="col-2 pl-2">
   <img [src]="product.imageUrl" *ngIf="showImage" alt="" [title]="product.description | uppercase">
 </div>
-<div class="col-4">{{ product.description }}</div>
+<div class="col-4">
+  <a [routerLink]="['/products', product.id]">{{ product.description }}</a>
+</div>
 <div class="col">{{ product.price | currency:'EUR':'symbol' }}</div>
 <div class="col">{{ product.available | date:'dd/MM/y' }}</div>
 <div class="col">

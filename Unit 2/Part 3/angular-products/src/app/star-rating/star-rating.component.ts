@@ -13,7 +13,7 @@ export class StarRatingComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // console.log(changes.rating.previousValue + ' - ' + changes.rating.currentValue);
+    this.auxRating = this.rating;
   }
 
   ngOnInit(): void {

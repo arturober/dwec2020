@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Product } from '../interfaces/product';
 import { ProductsService } from '../services/products.service';
 
@@ -14,11 +15,16 @@ export class ProductListComponent implements OnInit {
   search = '';
   products: Product[] = [];
 
-  constructor(private productsService: ProductsService) { }
+  constructor(
+    private productsService: ProductsService,
+    private titleService: Title
+  ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Angular Products | Product list');
     this.productsService.getProducts().subscribe(
-      products => this.products = products
+      products => this.products = products,
+      (error: string) => console.error(error)
     );
   }
 

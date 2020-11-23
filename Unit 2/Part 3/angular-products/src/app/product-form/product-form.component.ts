@@ -1,19 +1,32 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CanComponentDeactivate } from '../guards/page-leave.guard';
 import { Product } from '../interfaces/product';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent implements CanComponentDeactivate, OnInit {
   @Output() productAdd = new EventEmitter<Product>();
   newProduct!: Product;
   imageFile = '';
 
-  constructor() { }
+  constructor(
+    private title: Title,
+    private productsService: ProductsService
+  ) { }
+
+  canDeactivate(): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    return confirm('Are you sure you want to leave?. Changes will be lost...');
+  }
 
   ngOnInit(): void {
+    this.title.setTitle('Angular Products | New product');
     this.resetProduct();
   }
 
@@ -32,8 +45,13 @@ export class ProductFormComponent implements OnInit {
   }
 
   addProduct(): void {
-    this.productAdd.emit(this.newProduct);
-    this.resetProduct();
+    this.productsService.addProduct(this.newProduct).subscribe(
+      product => {
+        this.productAdd.emit(product);
+        this.resetProduct();
+      },
+      error => console.error(error)
+    );
   }
 
   resetProduct(): void {
@@ -42,7 +60,7 @@ export class ProductFormComponent implements OnInit {
       available: '',
       imageUrl: '',
       price: 0,
-      rating: 0
+      rating: 3
     };
     this.imageFile = '';
   }
