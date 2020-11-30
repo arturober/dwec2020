@@ -1,0 +1,38 @@
+<h1 [adSetColor]="color" textColor="orange">{{title}}</h1>
+<p [adSetColor]="color">I'm a paragraph</p>
+
+<select [(ngModel)]="color">
+  <option value="yellow">Yellow</option>
+  <option value="red">Red</option>
+  <option value="#0F6">Green</option>
+  <option value="#06F">Blue</option>
+</select>
+
+<span [ngSwitch]="color">
+  <span *ngSwitchCase="'yellow'">You selected yellow!</span>
+  <span *ngSwitchCase="'red'">I don't like red...</span>
+  <span *ngSwitchCase="'#0F6'">This is green</span>
+  <span *ngSwitchDefault>I'm daltonic so I can't differentiate this color from the rest</span>
+</span>
+
+<!-- <p *ngFor="let name of names">{{name}}</p> -->
+<ng-template ngFor let-name [ngForOf]="names">
+  <p>{{name}}</p>
+</ng-template>
+
+<p *adRepeatTimes="3; let n = current">
+  {{n}} welcome works!
+</p>
+
+
+<table>
+  <tr *adForGroup="let items of names by colsRow">
+    <td *ngFor="let item of items">{{item}}</td>
+  </tr>
+</table>
+
+<select [(ngModel)]="colsRow">
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+</select>
