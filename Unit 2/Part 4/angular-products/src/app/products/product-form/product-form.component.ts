@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -28,7 +29,7 @@ export class ProductFormComponent implements CanComponentDeactivate, OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Angular Products | New product');
-    this.resetProduct();
+    this.resetProduct()
   }
 
   loadImage(input: HTMLInputElement): void {

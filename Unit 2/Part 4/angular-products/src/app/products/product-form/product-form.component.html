@@ -7,7 +7,12 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label text-sm-right">Description</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="description" [(ngModel)]="newProduct.description">
+          <input type="text" class="form-control" name="description" [(ngModel)]="newProduct.description"
+            minlength="5" maxlength="60" required #descModel="ngModel"
+            [ngClass]="{
+              'is-valid': descModel.touched && descModel.valid,
+              'is-invalid': descModel.touched && descModel.invalid
+            }">
         </div>
       </div>
       <div class="form-group row">
@@ -43,6 +48,6 @@
         </div>
       </div>
     </form>
-    <!-- <p>{{newProduct | json}}</p> -->
+    <p>{{newProduct | json}}</p>
   </div>
 </div>
