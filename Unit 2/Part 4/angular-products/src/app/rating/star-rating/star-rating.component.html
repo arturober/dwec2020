@@ -1,0 +1,7 @@
+<div (mouseleave)="auxRating = rating">
+  <i class="fa-star"
+  *ngFor="let star of [1,2,3,4,5]"
+  [ngClass]="{'fas': star <= auxRating, 'far': star > auxRating}"
+  (mouseenter)="auxRating = star"
+  (click)="changeRating(star)"></i>
+</div>
