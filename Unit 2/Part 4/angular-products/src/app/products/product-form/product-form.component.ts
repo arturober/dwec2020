@@ -1,5 +1,5 @@
 import { AfterContentInit, AfterViewInit, Component, ContentChild, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';

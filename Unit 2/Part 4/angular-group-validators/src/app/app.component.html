@@ -1,0 +1,27 @@
+<form>
+  <p>You must select at least 1 checkbox</p>
+  <p ngModelGroup="optionGroup" #optionsModel="ngModelGroup" agvOneChecked>
+    <span *ngFor="let i of [1,2,3,4,5]">
+      <input type="checkbox" name="option{{i}}" [(ngModel)]="options[i-1]"> Option {{i}}
+    </span>
+  </p>
+  <p>{{options | json}}</p>
+  <p>Valid: {{optionsModel.valid}}</p>
+  <p>Errors: {{optionsModel.errors | json}}</p>
+  <p *ngIf="optionsModel.errors?.oneChecked" style="color:red;">You must choose at least 1 option</p>
+
+  <p>Choose your favourite movies genre:</p>
+  <p ngModelGroup="movieGroup" #genreModel="ngModelGroup" agvGenreValid>
+    <input type="radio" name="genre" value="Drama" [(ngModel)]="genre"> Drama
+    <input type="radio" name="genre" value="Comedy" [(ngModel)]="genre"> Comedy
+    <input type="radio" name="genre" value="Action" [(ngModel)]="genre"> Action
+    <input type="radio" name="genre" value="Others" [(ngModel)]="genre"> Other...
+    <input type="text" name="other" name="other" [(ngModel)]="otherGenre">
+  </p>
+  <p>Genre: {{genre}}</p>
+  <p>Other: {{otherGenre}}</p>
+  <p>Valid: {{genreModel.valid}}</p>
+  <p *ngIf="genreModel.errors?.genreValid" style="color: red;">
+    {{genreModel.errors.genreValid}}
+  </p>
+</form>

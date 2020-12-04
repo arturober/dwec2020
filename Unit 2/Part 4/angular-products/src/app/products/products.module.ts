@@ -9,6 +9,7 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingModule } from '../rating/rating.module';
+import { ValidatorsModule } from '../validators/validators.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { RatingModule } from '../rating/rating.module';
     CommonModule,
     ProductsRoutingModule,
     FormsModule,
-    RatingModule
+    RatingModule,
+    ValidatorsModule
   ],
   exports: []
 })
