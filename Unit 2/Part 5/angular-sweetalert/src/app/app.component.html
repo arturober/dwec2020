@@ -1,0 +1,20 @@
+<button [swal]="{ title: 'Important question', text: 'Can you see this?', icon: 'question' }">
+  Show SweetAlert question
+</button>
+
+<button [swal]="{ title: 'Who are you?', input: 'text', icon: 'question' }"
+(confirm)="sayHello($event)" (cancel)="goBack()">
+  Ask name
+</button>
+
+<swal title="Welcome" icon="success" #helloSwal (confirm)="helloClosed()">
+  <ng-container *swalPortal="swalTargets.content">
+    Hello {{name}}
+  </ng-container>
+  <ng-container *swalPortal="swalTargets.confirmButton">
+    Aceptar
+  </ng-container>
+</swal>
+
+<button (click)="helloSwal.fire()">Show hello</button>
+

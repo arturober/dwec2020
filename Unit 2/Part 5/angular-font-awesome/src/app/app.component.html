@@ -1,0 +1,13 @@
+User <fa-icon [icon]="['fas', 'user']"></fa-icon>
+User2 <fa-icon [icon]="['far', 'user']"></fa-icon>
+
+<fa-layers [fixedWidth]="true">
+  <fa-icon [icon]="['fas', 'square']" [styles]="{'color':'red'}"></fa-icon>
+  <fa-icon [inverse]="true" [icon]="['fas', 'spinner']" transform="shrink-6"
+  [spin]="true"></fa-icon>
+</fa-layers>
+
+<fa-layers [fixedWidth]="true">
+  <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+  <fa-layers-counter content="23"></fa-layers-counter>
+</fa-layers>
