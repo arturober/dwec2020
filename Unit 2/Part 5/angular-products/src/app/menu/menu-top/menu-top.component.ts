@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuTopComponent implements OnInit {
   title = 'Angular Products';
+  isMenuCollapsed = true;
 
   constructor() { }
 

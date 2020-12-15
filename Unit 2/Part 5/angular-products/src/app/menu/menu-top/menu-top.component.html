@@ -1,15 +1,27 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark mb-4">
+<!-- Use navbar-expand-md to show links only in medium and big screens -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <a class="navbar-brand" [routerLink]="['/welcome']">{{title}}</a>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/welcome']" [routerLinkActive]="['active']">Welcome</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/products']" [routerLinkActive]="['active']"
-        [routerLinkActiveOptions]="{exact: true}">Products</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/products', 'add']" [routerLinkActive]="['active']">Add Product</a>
-    </li>
-  </ul>
+
+  <!-- Menu button -->
+  <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    &#9776;
+  </button>
+
+  <!-- We need to add the ngbCollapse directive in the parent element of the options -->
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/welcome']" [routerLinkActive]="['active']"
+          (click)="isMenuCollapsed = true">Welcome</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/products']" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}" (click)="isMenuCollapsed = true">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/products', 'add']" [routerLinkActive]="['active']"
+          (click)="isMenuCollapsed = true">Add Product</a>
+      </li>
+    </ul>
+  </div>
 </nav>
