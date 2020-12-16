@@ -1,0 +1,9 @@
+<button appGoogleLogin class="btn btn-danger"
+(loginOk)="loggedGoogle($event)">
+  <fa-icon [icon]="['fab', 'google']"></fa-icon>
+  Google Login
+</button>
+<p>Name: {{googleUser?.getBasicProfile()?.getName()}}</p>
+<p>Email: {{googleUser?.getBasicProfile()?.getEmail()}}</p>
+<p><img [src]="googleUser?.getBasicProfile()?.getImageUrl()" alt=""></p>
+<p>{{googleUser?.getAuthResponse()?.id_token}}</p>
