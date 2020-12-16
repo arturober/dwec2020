@@ -1,9 +1,15 @@
-<button appGoogleLogin class="btn btn-danger"
-(loginOk)="loggedGoogle($event)">
+<button appGoogleLogin class="btn btn-danger" (loginOk)="loggedGoogle($event)">
   <fa-icon [icon]="['fab', 'google']"></fa-icon>
   Google Login
 </button>
-<p>Name: {{googleUser?.getBasicProfile()?.getName()}}</p>
-<p>Email: {{googleUser?.getBasicProfile()?.getEmail()}}</p>
-<p><img [src]="googleUser?.getBasicProfile()?.getImageUrl()" alt=""></p>
-<p>{{googleUser?.getAuthResponse()?.id_token}}</p>
+<div *ngIf="googleUser">
+  <p>Name: {{googleUser.getBasicProfile().getName()}}</p>
+  <p>Email: {{googleUser.getBasicProfile().getEmail()}}</p>
+  <p><img [src]="googleUser.getBasicProfile().getImageUrl()" alt=""></p>
+  <p>{{googleUser.getAuthResponse().id_token}}</p>
+</div>
+
+<button appFbLogin [scopes]="['email', 'public_profile']" class="btn btn-primary" (loginOk)="loggedFacebook($event)">
+  <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+  Facebook
+</button>

@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ export class AppComponent {
     library: FaIconLibrary,
     private ngZone: NgZone
   ) {
-    library.addIcons(faGoogle)
+    library.addIcons(faGoogle, faFacebook);
   }
 
   loggedGoogle(user: gapi.auth2.GoogleUser) {
@@ -28,6 +28,11 @@ export class AppComponent {
     console.log(user.getBasicProfile().getName());
     console.log(user.getBasicProfile().getEmail());
     console.log(user.getBasicProfile().getImageUrl());
+  }
+
+  loggedFacebook(resp: fb.StatusResponse) {
+    // Send this to your server
+    console.log(resp.authResponse.accessToken);
   }
 
 }
