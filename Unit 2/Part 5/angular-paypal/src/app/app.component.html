@@ -1,0 +1,7 @@
+<h3>Pay {{amount | currency:'EUR':'symbol'}}</h3>
+<p>
+  <app-paypal-button id="payPalButton" [amount]="amount" (paymentCompleted)="getPayment($event)"></app-paypal-button>
+</p>
+<p>
+  {{payedMessage}}
+</p>
