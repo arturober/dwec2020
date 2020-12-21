@@ -1,0 +1,10 @@
+.chat-container {
+  height: 300px;
+  max-width: 300px;
+  padding: 10px 20px;
+}
+
+p.mine {
+  text-align: right;
+  color: darkblue;
+}

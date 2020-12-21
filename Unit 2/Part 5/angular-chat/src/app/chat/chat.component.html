@@ -1,0 +1,12 @@
+<div class="chat-container">
+  <p *ngFor="let m of messages" [ngClass]="{'mine': m.mine}">
+    <strong>{{m.mine ? 'me' : m.user}}:</strong> {{m.text}}
+  </p>
+</div>
+<p>
+  <input type="text" [(ngModel)]="newMsg">
+  <button (click)="send()" [disabled]="!connected">Send</button>
+  <button (click)="connect()" [disabled]="connected">Connect</button>
+  <button (click)="disconnect()" [disabled]="!connected">Disconnect</button>
+</p>
+<p>Status: {{connected ? 'Connected as ' + user : 'Disconnected'}}</p>
