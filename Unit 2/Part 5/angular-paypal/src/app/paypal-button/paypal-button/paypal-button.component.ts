@@ -70,5 +70,3 @@ export class PaypalButtonComponent implements OnInit {
   }
 }
 
-
-}
