@@ -16,7 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     WelcomeComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,
     MenuModule,

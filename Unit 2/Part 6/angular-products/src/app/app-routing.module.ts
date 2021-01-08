@@ -21,7 +21,7 @@ const APP_ROUTES: Route[] = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(APP_ROUTES,  {preloadingStrategy: PreloadAllModules}),
+    RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules, initialNavigation: 'enabled' }),
   ],
   exports: [
     RouterModule
