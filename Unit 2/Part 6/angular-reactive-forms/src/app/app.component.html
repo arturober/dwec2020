@@ -1,0 +1,40 @@
+<form [formGroup]="userForm">
+  <p><input type="text" placeholder="Name" formControlName="name" /></p>
+  <div formGroupName="emailGroup">
+    <p>
+      <input type="email" placeholder="Email" formControlName="email" />
+    </p>
+    <p>
+      <input
+        type="email"
+        placeholder="Repeat email"
+        formControlName="emailConfirm"
+      />
+    </p>
+  </div>
+  <p><input type="date" placeholder="Birth date" formControlName="birth" /></p>
+  <p><input type="tel" placeholder="Phone" formControlName="phone" /></p>
+  <p>
+    <input type="password" placeholder="Password" formControlName="password" />
+  </p>
+  <p>
+    Notify by:
+    <input type="radio" formControlName="notifications" value="email" />
+    Email
+    <input type="radio" formControlName="notifications" value="phone" />
+    Phone
+  </p>
+  <p
+    formArrayName="otherPhones"
+    *ngFor="let phone of otherPhones.controls; let i = index"
+  >
+    <input type="tel" placeholder="Other phone {{ i + 1 }}" [formControlName]="i" />
+  </p>
+
+  <p><button type="submit" [disabled]="userForm.invalid">Send</button></p>
+</form>
+<p>{{ userForm.value | json }}</p>
+<p>Name modified: {{ userForm.get("name")?.dirty }}</p>
+<p><button (click)="setDemoData()">Set demo data</button></p>
+<p><button (click)="addPhone()">Add Phone</button></p>
+
