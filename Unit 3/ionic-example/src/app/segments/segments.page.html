@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Segments</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="light">
+    <ion-segment [(ngModel)]="type">
+      <ion-segment-button value="heroes"> Heroes </ion-segment-button>
+      <ion-segment-button value="villains"> Villains </ion-segment-button>
+      <ion-segment-button value="weapons"> Weapons </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="type">
+    <ion-list *ngSwitchCase="'heroes'">
+      <ion-item *ngFor="let heroe of heroes"> {{ heroe }} </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'villains'">
+      <ion-item *ngFor="let villain of villains"> {{ villain }} </ion-item>
+    </ion-list>
+    <ion-list *ngSwitchCase="'weapons'">
+      <ion-item *ngFor="let weapon of weapons"> {{ weapon }} </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

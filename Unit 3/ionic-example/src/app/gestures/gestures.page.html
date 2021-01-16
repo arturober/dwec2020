@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Gestures</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item (tap)="tap()" (press)="press()"
+    (swipeLeft)="swipeLeft()" (swipeRight)="swipeRight()">
+    <ion-label>Touch me</ion-label>
+  </ion-item>
+  <p class="ion-padding-start ion-padding-end">
+    {{events | json}}
+  </p>
+</ion-content>

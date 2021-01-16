@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Horizontal Scroll</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="scrollX">
+    <ion-button *ngFor="let icon of icons" fill="clear">
+      <ion-icon slot="icon-only" [name]="icon"></ion-icon>
+    </ion-button>
+  </div>
+  <p>Horizontal Scroll</p>
+</ion-content>

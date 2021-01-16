@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Modal Content</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header color="tertiary">
+      Hello {{name}}, pick a food
+    </ion-list-header>
+    <ion-radio-group [(ngModel)]="food">
+      <ion-item>
+        <ion-label>Pizza</ion-label>
+        <ion-radio value="pizza" color="primary"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hamburger</ion-label>
+        <ion-radio value="hamburger" color="secondary"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Salad</ion-label>
+        <ion-radio value="salad" color="danger"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-button color="success" expand="block" (click)="chooseFood()">
+    <ion-label>Choose food</ion-label>
+  </ion-button>
+</ion-content>

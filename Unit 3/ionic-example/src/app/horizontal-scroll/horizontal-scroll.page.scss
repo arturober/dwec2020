@@ -1,0 +1,7 @@
+.scrollX {
+    overflow: auto;
+    white-space: nowrap;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}

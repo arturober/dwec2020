@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Select</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Select consoles</ion-label>
+      <ion-select [(ngModel)]="selectedConsoles" multiple="true" 
+                  cancelText="No!" okText="Okay!">
+        <ion-select-option *ngFor="let console of consoles" 
+                    [value]="console.val">{{console.title}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <p class="ion-padding">
+    Selected consoles: {{selectedConsoles}}
+  </p>
+</ion-content>

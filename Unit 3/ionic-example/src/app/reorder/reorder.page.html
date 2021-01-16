@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Reorder</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" (click)="toggleReordering()">
+    {{disableOrdering ? 'Enable' : 'Disable' }} reorder
+  </ion-button>
+  <ion-list>
+    <ion-reorder-group (ionItemReorder)="reorder($event)" [disabled]="disableOrdering">
+      <ion-item *ngFor="let food of foods">
+        <ion-label>{{food}}</ion-label>
+        <ion-reorder slot="start"></ion-reorder>
+      </ion-item>
+    </ion-reorder-group>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inputs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #loginForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" name="email"  required>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" name="password"
+           required>
+        </ion-input>
+      </ion-item>
+      <ion-list>
+        <ion-item>
+        <ion-label position="floating">Birth date</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY HH:mm"
+        pickerFormat="DD MMMM YYYY HH mm" max="2030"></ion-datetime>
+        </ion-item>
+      </ion-list>
+    </ion-list>
+    <p>
+      <ion-button
+        type="submit"
+        color="primary"
+        expand="block"
+        [disabled]="loginForm.invalid"
+        >Login</ion-button
+      >
+    </p>
+  </form>
+</ion-content>
