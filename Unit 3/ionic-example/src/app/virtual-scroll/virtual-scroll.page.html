@@ -8,16 +8,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-virtual-scroll [items]="items" [headerFn]="headerFn">
-    <ion-item-divider color="primary" *virtualHeader="let header">
-      {{ header }}
-    </ion-item-divider>
-    <ion-item *virtualItem="let item"> {{ item }} </ion-item>
-  </ion-virtual-scroll>
-  <!-- <ion-virtual-scroll [items]="countries" [headerFn]="headerFn2">
+  <!-- <ion-virtual-scroll [items]="items" [headerFn]="headerFn">
     <ion-item-divider color="primary" *virtualHeader="let header">
       {{ header }}
     </ion-item-divider>
     <ion-item *virtualItem="let item"> {{ item }} </ion-item>
   </ion-virtual-scroll> -->
+  <ion-virtual-scroll [items]="countries" [headerFn]="headerFn2">
+    <ion-item-divider color="primary" *virtualHeader="let header">
+      {{ header }}
+    </ion-item-divider>
+    <ion-item *virtualItem="let item"> {{ item }} </ion-item>
+  </ion-virtual-scroll>
 </ion-content>

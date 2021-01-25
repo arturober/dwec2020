@@ -41,7 +41,8 @@ export class AlertsPage implements OnInit {
     await alert.present();
 
     const resp = await alert.onDidDismiss();
-    this.resp = resp.role !== 'cancel' ? 'You said Ok!' : 'You cancelled...';
+    // this.resp = resp.role !== 'cancel' ? 'You said Ok!' : 'You cancelled...';
+    this.resp = resp.data && resp.data.ok ? 'You said Ok!' : 'You cancelled...';
   }
 
   async showAlert2() {
@@ -52,7 +53,7 @@ export class AlertsPage implements OnInit {
           name: 'pizza',
           type: 'checkbox',
           value: 'pizza',
-          label: 'Pizza'
+          label: 'Pizza',
         },
         {
           name: 'hamburguer',
@@ -79,7 +80,8 @@ export class AlertsPage implements OnInit {
     await alert.present();
 
     const resp = await alert.onDidDismiss();
-    if (resp.role !== 'cancel') {
+    if (resp.data && resp.role !== 'cancel') {
+      console.log(resp.data.values);
       this.foods = resp.data.values.toString();
     }
   }
@@ -92,12 +94,12 @@ export class AlertsPage implements OnInit {
         {
           type: 'text',
           name: 'email',
-          placeholder: 'Email'
+          placeholder: 'Email',
         },
         {
           type: 'password',
           name: 'pass',
-          placeholder: 'Password'
+          placeholder: 'Password',
         }
       ],
       buttons: ['Login', 'Cancel']
@@ -106,7 +108,7 @@ export class AlertsPage implements OnInit {
     await alert.present();
 
     const result = await alert.onDidDismiss();
-    if (result.role !== 'cancel') {
+    if (result.data && result.role !== 'cancel') {
       this.email = result.data.values.email;
       this.pass = result.data.values.pass;
     }

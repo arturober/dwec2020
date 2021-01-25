@@ -118,6 +118,14 @@ const routes: Routes = [
   {
     path: 'modal',
     loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
+  {
+    path: 'navigation1',
+    loadChildren: () => import('./navigation1/navigation1.module').then( m => m.Navigation1PageModule)
+  },
+  {
+    path: 'navigation2',
+    loadChildren: () => import('./navigation2/navigation2.module').then( m => m.Navigation2PageModule)
   }
 ];
 

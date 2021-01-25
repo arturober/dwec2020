@@ -16,4 +16,8 @@ export class SegmentsPage implements OnInit {
   ngOnInit() {
   }
 
+  typeChanged() {
+    console.log(`New type selected: ${this.type}`);
+  }
+
 }

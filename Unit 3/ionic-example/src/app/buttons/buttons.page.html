@@ -8,25 +8,53 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <header>Small Size</header>
+  <ion-button size="small">Default</ion-button>
+  <ion-button size="small" color="secondary">Secondary</ion-button>
+  <ion-button size="small" color="tertiary">Tertiary</ion-button>
 
-    <header>Small Size</header>
-    <ion-button size="small">Default</ion-button>
-    <ion-button size="small" color="secondary">Secondary</ion-button>
-    <ion-button size="small" color="tertiary">Tertiary</ion-button>
+  <header>Default Size</header>
+  <ion-button color="success">Success</ion-button>
+  <ion-button color="warning">Warning</ion-button>
+  <ion-button color="danger">Danger</ion-button>
 
-    <header>Default Size</header>
-    <ion-button color="success">Success</ion-button>
-    <ion-button color="warning">Warning</ion-button>
-    <ion-button color="danger">Danger</ion-button>
+  <header>Large Size</header>
+  <ion-button size="large" color="light">Light</ion-button>
+  <ion-button size="large" color="medium">Medium</ion-button>
+  <ion-button size="large" color="dark">Dark</ion-button>
 
-    <header>Large Size</header>
-    <ion-button size="large" color="light">Light</ion-button>
-    <ion-button size="large" color="medium">Medium</ion-button>
-    <ion-button size="large" color="dark">Dark</ion-button>
+  <header>Block Width</header>
+  <ion-button expand="block" color="twitter">
+    <ion-icon name="logo-twitter" slot="start"></ion-icon>
+    A block button
+  </ion-button>
 
-    <header>Block Width</header>
-    <ion-button expand="block" color="twitter">A block button</ion-button>
+  <header>Full Width</header>
+  <ion-button expand="full" color="secondary">A full-width button</ion-button>
 
-    <header>Full Width</header>
-    <ion-button expand="full" color="secondary">A full-width button</ion-button>
+  <ion-button color="primary" fill="outline">Primary Outline</ion-button>
+
+  <ion-button color="primary" fill="clear">Primary Clear</ion-button>
+
+  <ion-button>
+    <ion-icon slot="start" name="star"></ion-icon>
+    Left Icon
+  </ion-button>
+  
+  <ion-button>
+    Right Icon
+    <ion-icon slot="end" name="star"></ion-icon>
+  </ion-button>
+
+  <ion-button>
+    <ion-icon slot="icon-only" name="star"></ion-icon>
+  </ion-button>
+
+  <ion-button fill="outline">
+    <ion-icon slot="icon-only" name="star"></ion-icon>
+  </ion-button>
+
+  <ion-button fill="clear">
+    <ion-icon slot="icon-only" name="star"></ion-icon>
+  </ion-button>
 </ion-content>

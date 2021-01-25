@@ -9,4 +9,8 @@
 
 <ion-content class="ion-padding">
   <p>Home page</p>
+  <ion-button routerDirection="root" [routerLink]="['/tabs', 'about']">Go to about page</ion-button>
+  <ion-button (click)="goAbout()">Go to about page (code)</ion-button>
+  <ion-button (click)="goButtons()">Go to buttons page (code)</ion-button>
+
 </ion-content>

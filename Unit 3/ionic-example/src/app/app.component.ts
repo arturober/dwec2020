@@ -87,6 +87,11 @@ export class AppComponent {
       icon: 'albums'
     },
     {
+      title: 'Navigation',
+      url: '/navigation1',
+      icon: 'arrow-forward-circle-outline'
+    },
+    {
       title: 'Popover',
       url: '/popover',
       icon: 'albums'

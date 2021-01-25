@@ -6,7 +6,7 @@
     <ion-title>Segments</ion-title>
   </ion-toolbar>
   <ion-toolbar color="light">
-    <ion-segment [(ngModel)]="type">
+    <ion-segment [(ngModel)]="type" (ngModelChange)="typeChanged()">
       <ion-segment-button value="heroes"> Heroes </ion-segment-button>
       <ion-segment-button value="villains"> Villains </ion-segment-button>
       <ion-segment-button value="weapons"> Weapons </ion-segment-button>
