@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonReorder } from '@ionic/angular';
 
 @Component({
   selector: 'app-reorder',

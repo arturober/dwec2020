@@ -17,7 +17,7 @@ export class ToastPage implements OnInit {
       color: 'dark',
       buttons: [
         {
-          text: 'Close',
+          // text: ' Close',
           icon: 'close-circle',
           role: 'cancel'
           // handler:  () => {
@@ -27,6 +27,7 @@ export class ToastPage implements OnInit {
       ]
     });
     await toast.present();
+    // Code after the toast is closed
   }
 
   ngOnInit() {}

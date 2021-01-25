@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Page 2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Page 2</h2>
+  <ion-button routerDirection="back" [routerLink]="['/navigation1']">
+    Go to page 1
+  </ion-button>
+
+  <ion-button (click)="goToPage1()">
+    Go to page 1 (code)
+  </ion-button>
+</ion-content>

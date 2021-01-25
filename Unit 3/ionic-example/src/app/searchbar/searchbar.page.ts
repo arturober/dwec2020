@@ -28,7 +28,7 @@ export class SearchbarPage implements OnInit {
     this.filteredItems = this.items;
   }
 
-  filterItems(event) {
+  filterItems() {
     if (this.search && this.search.trim() !== '') {
       this.search = this.search.trim().toLowerCase();
       this.filteredItems = this.items.filter(i =>

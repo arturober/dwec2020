@@ -7,7 +7,7 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-searchbar debounce="500" [(ngModel)]="search"
-    (ionChange)="filterItems($event)">
+    (ionChange)="filterItems()">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -18,4 +18,5 @@
      <ion-label>{{item}}</ion-label>
     </ion-item>
   </ion-list>
+
 </ion-content>
