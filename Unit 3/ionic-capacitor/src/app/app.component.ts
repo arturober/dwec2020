@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Plugins, StatusBarStyle } from '@capacitor/core';
+const { SplashScreen, StatusBar } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -13,57 +13,131 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'App',
+      url: '/app',
+      icon: 'apps'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Barcode Scanner',
+      url: '/barcode-scanner',
+      icon: 'barcode'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Camera',
+      url: '/camera',
+      icon: 'camera'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Clipboard',
+      url: '/clipboard',
+      icon: 'clipboard'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Contacts',
+      url: '/contacts',
+      icon: 'people'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
-    }
+      title: 'Device Info',
+      url: '/device',
+      icon: 'phone-portrait'
+    },
+    {
+      title: 'Driving directions',
+      url: '/driving-directions',
+      icon: 'navigate'
+    },
+    {
+      title: 'Facebook Login',
+      url: '/facebook-login',
+      icon: 'logo-facebook'
+    },
+    {
+      title: 'Filesystem',
+      url: '/filesystem',
+      icon: 'folder'
+    },
+    {
+      title: 'Flashlight',
+      url: '/flashlight',
+      icon: 'flashlight'
+    },
+    {
+      title: 'Geolocation',
+      url: '/geolocation',
+      icon: 'pin'
+    },
+    {
+      title: 'Google Login',
+      url: '/google-login',
+      icon: 'logo-google'
+    },
+    {
+      title: 'Keyboard',
+      url: '/keyboard',
+      icon: 'keypad'
+    },
+    {
+      title: 'Local notifications',
+      url: '/local-notifications',
+      icon: 'notifications'
+    },
+    {
+      title: 'Modals',
+      url: '/modals',
+      icon: 'alert'
+    },
+    {
+      title: 'Motion',
+      url: '/motion',
+      icon: 'move'
+    },
+    {
+      title: 'Network',
+      url: '/network',
+      icon: 'wifi'
+    },
+    {
+      title: 'Social sharing',
+      url: '/share',
+      icon: 'share'
+    },
+    {
+      title: 'SQLite',
+      url: '/sqlite',
+      icon: 'grid'
+    },
+    {
+      title: 'Storage',
+      url: '/storage',
+      icon: 'logo-buffer'
+    },
+    {
+      title: 'Toast',
+      url: '/toast',
+      icon: 'alarm'
+    },
+    {
+      title: 'Vibration',
+      url: '/vibration',
+      icon: 'pulse'
+    },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      SplashScreen.hide();
+      StatusBar.setBackgroundColor({color: '#3880ff'});
+      StatusBar.setStyle({style: StatusBarStyle.Dark});
     });
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
   }
 }

@@ -33,6 +33,12 @@
             ],
             "styles": [
               {
+                "input": "./node_modules/mapbox-gl/dist/mapbox-gl.css"
+              },
+              {
+                "input": "./node_modules/@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css"
+              },
+              {
                 "input": "src/theme/variables.scss"
               },
               {
