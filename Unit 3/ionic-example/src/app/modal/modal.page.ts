@@ -23,7 +23,7 @@ export class ModalPage implements OnInit {
     });
     await modal.present();
     const result = await modal.onDidDismiss();
-    if (result.data.food) {
+    if (result.data && result.data.food) {
       this.food = result.data.food;
     }
   }
