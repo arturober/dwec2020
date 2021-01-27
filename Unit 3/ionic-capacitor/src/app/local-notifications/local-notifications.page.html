@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Local Notifications
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Message to remember</ion-label>
+      <ion-input [(ngModel)]="message"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="secondary" [disabled]="scheduled" (click)="createNotification()">Notify (10sec)</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="danger" [disabled]="!scheduled" (click)="cancelNotification()">Cancel</ion-button>
+    </ion-col>
+  </ion-row>
+  <p *ngIf="triggered">The notification has been triggered!</p>
+</ion-content>

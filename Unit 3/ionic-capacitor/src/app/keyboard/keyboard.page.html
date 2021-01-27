@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Keyboard
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button color="primary" *ngIf="!visible" (click)="showKeyboard()">Show keyboard</ion-button>
+  <ion-button color="secondary" *ngIf="visible" (click)="hideKeyboard()">Hide keyboard</ion-button>
+  <p>Keyboard is {{visible ? 'visible' : 'hidden'}}</p>
+</ion-content>

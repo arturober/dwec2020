@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Network Status
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h3 *ngIf="connected">Connected to: {{type}}</h3>
+  <h3 color="danger" *ngIf="!connected">Not connected!</h3>
+</ion-content>

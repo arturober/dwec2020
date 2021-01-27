@@ -31,6 +31,46 @@ const routes: Routes = [
     path: 'geolocation',
     loadChildren: () => import('./geolocation/geolocation.module').then( m => m.GeolocationPageModule)
   },
+  {
+    path: 'keyboard',
+    loadChildren: () => import('./keyboard/keyboard.module').then( m => m.KeyboardPageModule)
+  },
+  {
+    path: 'local-notifications',
+    loadChildren: () => import('./local-notifications/local-notifications.module').then( m => m.LocalNotificationsPageModule)
+  },
+  {
+    path: 'modals',
+    loadChildren: () => import('./modals/modals.module').then( m => m.ModalsPageModule)
+  },
+  {
+    path: 'motion',
+    loadChildren: () => import('./motion/motion.module').then( m => m.MotionPageModule)
+  },
+  {
+    path: 'network',
+    loadChildren: () => import('./network/network.module').then( m => m.NetworkPageModule)
+  },
+  {
+    path: 'share',
+    loadChildren: () => import('./share/share.module').then( m => m.SharePageModule)
+  },
+  {
+    path: 'storage',
+    loadChildren: () => import('./storage/storage.module').then( m => m.StoragePageModule)
+  },
+  {
+    path: 'toast',
+    loadChildren: () => import('./toast/toast.module').then( m => m.ToastPageModule)
+  },
+  {
+    path: 'application',
+    loadChildren: () => import('./application/application.module').then( m => m.ApplicationPageModule)
+  },
+  {
+    path: 'driving-directions',
+    loadChildren: () => import('./driving-directions/driving-directions.module').then( m => m.DrivingDirectionsPageModule)
+  },
   
 ];
 
