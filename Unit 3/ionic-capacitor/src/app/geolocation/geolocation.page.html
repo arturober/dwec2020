@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <mgl-map [style]="'mapbox://styles/mapbox/streets-v11'" [zoom]="[14]" [center]="[lng, lat]">
+  <mgl-map #mapComponent [style]="'mapbox://styles/mapbox/streets-v11'" [zoom]="[14]" [center]="[lng, lat]">
     <mgl-marker #marker [lngLat]="[lng, lat]"></mgl-marker>
     <mgl-popup [marker]="marker">
       You are here

@@ -15,10 +15,11 @@ export class FilesystemPage implements OnInit {
   async ngOnInit() {
     try {
       if(!(await this.dirExists())) {
-        this.createDir();
+        await this.createDir();
       }
 
-      await this.createFile();
+      await this.createFile('text1.txt');
+      await this.createFile('text2.txt');
       this.files = await this.listFiles();
     } catch (e) {
       this.error = 'Filesystem error: ' + e;
@@ -45,9 +46,9 @@ export class FilesystemPage implements OnInit {
     });
   }
 
-  async createFile(): Promise<void> {
+  async createFile(name: string): Promise<void> {
     await Filesystem.writeFile({
-      path: 'secrets/text.txt',
+      path: 'secrets/' + name,
       data: 'This is a test',
       directory: FilesystemDirectory.Documents,
       encoding: FilesystemEncoding.UTF8
