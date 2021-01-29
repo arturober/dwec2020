@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Plugins, ActionSheetOptionStyle } from '@capacitor/core';
+import { Plugins, ActionSheetOptionStyle, ActionSheetOption } from '@capacitor/core';
 const { Modals } = Plugins;
 
 @Component({
@@ -49,7 +49,7 @@ export class ModalsPage implements OnInit {
       message: 'Select an option to perform',
       options: [
         {
-          title: 'Upload'
+          title: 'Upload',
         },
         {
           title: 'Share'

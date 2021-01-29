@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Plugins, DeviceInfo } from '@capacitor/core';
+import { Plugins, DeviceInfo, DeviceBatteryInfo } from '@capacitor/core';
 const { Device } = Plugins;
 
 @Component({
@@ -9,10 +9,12 @@ const { Device } = Plugins;
 })
 export class DevicePage implements OnInit {
   info: DeviceInfo;
+  battery: DeviceBatteryInfo;
 
   constructor() { }
 
   async ngOnInit() {
     this.info = await Device.getInfo();
+    this.battery = await Device.getBatteryInfo();
   }
 }

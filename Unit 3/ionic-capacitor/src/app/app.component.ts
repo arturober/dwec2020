@@ -131,10 +131,13 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
+    
     this.platform.ready().then(() => {
-      SplashScreen.hide();
-      StatusBar.setBackgroundColor({color: '#3880ff'});
-      StatusBar.setStyle({style: StatusBarStyle.Dark});
+      if(!this.platform.platforms().includes('desktop')) {
+        SplashScreen.hide();
+        StatusBar.setBackgroundColor({color: '#3880ff'});
+        StatusBar.setStyle({style: StatusBarStyle.Dark});
+      }
     });
   }
 
