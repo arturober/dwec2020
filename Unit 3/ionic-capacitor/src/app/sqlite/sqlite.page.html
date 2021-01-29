@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>SQLite</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p *ngIf="open">Connected to SQLite!</p>
+  <form #personForm="ngForm" novalidate>
+    <ion-list>
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="person.name" required>
+	  </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Age</ion-label>
+        <ion-input type="number" name="age" [(ngModel)]="person.age" required>
+        </ion-input>
+      </ion-item>
+    </ion-list>
+    <div>
+      <ion-button expand="block" [disabled]="personForm.invalid" (click)="add()">Add</ion-button>
+    </div>
+  </form>
+
+  <ion-list>
+    <ion-item *ngFor="let person of persons; let i = index">
+      {{person.name}} ({{person.age}})
+      <ion-button fill="clear" slot="end" (click)="remove(person, i)">
+        <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

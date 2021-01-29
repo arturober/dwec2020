@@ -79,6 +79,18 @@ const routes: Routes = [
     path: 'facebook-login',
     loadChildren: () => import('./facebook-login/facebook-login.module').then( m => m.FacebookLoginPageModule)
   },
+  {
+    path: 'barcode-scanner',
+    loadChildren: () => import('./barcode-scanner/barcode-scanner.module').then( m => m.BarcodeScannerPageModule)
+  },
+  {
+    path: 'flashlight',
+    loadChildren: () => import('./flashlight/flashlight.module').then( m => m.FlashlightPageModule)
+  },
+  {
+    path: 'sqlite',
+    loadChildren: () => import('./sqlite/sqlite.module').then( m => m.SqlitePageModule)
+  },
   
 ];
 
