@@ -4,4 +4,7 @@
     <string name="title_activity_main">Ionic Capacitor</string>
     <string name="package_name">com.arturober.ionic.capacitor</string>
     <string name="custom_url_scheme">com.arturober.ionic.capacitor</string>
+    <string name="server_client_id">667204529710-2b9jd5idoqepfe6ahpq3qo9kvtkmpdcb.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">452581145459274</string>
+    <string name="fb_login_protocol_scheme">fb452581145459274</string>
 </resources>

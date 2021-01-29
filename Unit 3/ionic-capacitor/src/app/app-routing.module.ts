@@ -71,6 +71,14 @@ const routes: Routes = [
     path: 'driving-directions',
     loadChildren: () => import('./driving-directions/driving-directions.module').then( m => m.DrivingDirectionsPageModule)
   },
+  {
+    path: 'google-login',
+    loadChildren: () => import('./google-login/google-login.module').then( m => m.GoogleLoginPageModule)
+  },
+  {
+    path: 'facebook-login',
+    loadChildren: () => import('./facebook-login/facebook-login.module').then( m => m.FacebookLoginPageModule)
+  },
   
 ];
 

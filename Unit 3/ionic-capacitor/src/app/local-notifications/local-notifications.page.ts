@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
 import { Plugins } from '@capacitor/core';
 const { LocalNotifications } = Plugins;
 
@@ -7,7 +7,7 @@ const { LocalNotifications } = Plugins;
   templateUrl: './local-notifications.page.html',
   styleUrls: ['./local-notifications.page.scss']
 })
-export class LocalNotificationsPage implements OnInit {
+export class LocalNotificationsPage implements OnInit, OnDestroy {
   message = '';
   triggered = false;
   scheduled = false;
@@ -46,5 +46,9 @@ export class LocalNotificationsPage implements OnInit {
     } finally {
       this.scheduled = false;
     }
+  }
+
+  ngOnDestroy() {
+    LocalNotifications.removeAllListeners();
   }
 }

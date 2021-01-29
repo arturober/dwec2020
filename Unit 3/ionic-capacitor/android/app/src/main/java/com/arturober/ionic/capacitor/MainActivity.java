@@ -8,6 +8,8 @@ import com.getcapacitor.Plugin;
 import java.util.ArrayList;
 
 import com.servicesight.capacitor.startnavigation.StartNavigationPlugin;
+import com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth;
+import com.getcapacitor.community.facebooklogin.FacebookLogin;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -19,6 +21,8 @@ public class MainActivity extends BridgeActivity {
       // Additional plugins you've installed go here
       // Ex: add( TotallyAwesomePlugin.class);
       add(StartNavigationPlugin.class);
+      add(GoogleAuth.class);
+      add(FacebookLogin.class);
     }});
   }
 }
