@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Plugins } from '@capacitor/core';
+import { Plugins, Capacitor } from '@capacitor/core';
 import { NgForm } from '@angular/forms';
 const { CapacitorSQLite } = Plugins;
 // import { Capacitor } from '@capacitor/core';
-// import { CapacitorSQLite, SQLiteDBConnection, SQLiteConnection, capSQLiteSet,
-//          capSQLiteChanges, capEchoResult, capSQLiteResult} from '@capacitor-community/sqlite';
+import { SQLiteDBConnection, SQLiteConnection} from '@capacitor-community/sqlite';
 
 @Component({
   selector: 'app-sqlite',
@@ -13,6 +12,7 @@ const { CapacitorSQLite } = Plugins;
 })
 export class SqlitePage implements OnInit, OnDestroy {
   @ViewChild('personForm') personForm: NgForm;
+  db: SQLiteDBConnection;
   open = false;
   persons: { id?: number, name: string, age: number }[] = [];
   person: { id?: number, name: string, age: number } = {
@@ -23,34 +23,37 @@ export class SqlitePage implements OnInit, OnDestroy {
   constructor() { }
 
   async ngOnInit() {
-    const opened = await CapacitorSQLite.open({database: 'testsqlite'});
-    if (!opened.result) { return; }
-
+    console.log("*** platform " + Capacitor.getPlatform());
+    const sqlite = new SQLiteConnection(CapacitorSQLite);
+    console.log(sqlite);
+    this.db = await sqlite.createConnection('testsqlite', false, 'no-encryption', 1);
+    await this.db.open();
     this.open = true;
-    await CapacitorSQLite.run({statement: `CREATE TABLE IF NOT EXISTS person (
+
+    let ret: any = await this.db.execute(`CREATE TABLE IF NOT EXISTS person (
       id integer primary key,
       name text not null,
-      age integer not null)`});
+      age integer not null)`);
 
-    const result = await CapacitorSQLite.query({statement: 'SELECT * FROM person'});
+    const result = await this.db.query('SELECT * FROM person');
     this.persons = result.values;
   }
 
   async ngOnDestroy() {
     if (this.open) {
-      await CapacitorSQLite.close({database: 'testsqlite'});
+      await this.db.close();
     }
   }
 
   async add() {
     if (!this.open) { return; }
 
-    const addRes = await CapacitorSQLite.run({
-      statement: 'INSERT INTO person (name, age) VALUES (?,?)',
-      values: [this.person.name, this.person.age]
-    });
+    const addRes = await this.db.run(
+      'INSERT INTO person (name, age) VALUES (?,?)',
+      [this.person.name, this.person.age]
+    );
 
-    const idRes = await CapacitorSQLite.query({statement: 'SELECT last_insert_rowid()'});
+    const idRes = await this.db.query('SELECT last_insert_rowid()');
 
     this.person.id = +Object.values(idRes.values[0])[0];
     this.persons.push(this.person);
@@ -61,10 +64,10 @@ export class SqlitePage implements OnInit, OnDestroy {
   async remove(person, index: number) {
     if (!this.open) { return; }
 
-    const delRes = await CapacitorSQLite.run({
-      statement: 'DELETE FROM person WHERE id = ?',
-      values: [person.id]
-    });
+    const delRes = await this.db.run(
+      'DELETE FROM person WHERE id = ?',
+      [person.id]
+    );
 
     if (delRes.changes > 0) {
       this.persons.splice(index, 1);

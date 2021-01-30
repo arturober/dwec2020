@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.servicesight.capacitor.startnavigation.StartNavigationPlugin;
 import com.codetrixstudio.capacitor.GoogleAuth.GoogleAuth;
 import com.getcapacitor.community.facebooklogin.FacebookLogin;
+import com.getcapacitor.community.database.sqlite.CapacitorSQLite;
 
 public class MainActivity extends BridgeActivity {
   @Override
@@ -23,6 +24,7 @@ public class MainActivity extends BridgeActivity {
       add(StartNavigationPlugin.class);
       add(GoogleAuth.class);
       add(FacebookLogin.class);
+      add(CapacitorSQLite.class);
     }});
   }
 }
