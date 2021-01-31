@@ -1,4 +1,4 @@
-import { Component, OnInit, Host } from '@angular/core';
+import { Component, OnInit, Host, forwardRef, Inject } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { AlertController, NavController } from '@ionic/angular';
 import { ProductService } from '../../services/product.service';
@@ -16,7 +16,7 @@ export class ProductInfoPage implements OnInit {
     private alertCrl: AlertController,
     private productService: ProductService,
     private nav: NavController,
-    @Host() private parentComponent: ProductDetailsPage
+    @Inject(ProductDetailsPage) private parentComponent: ProductDetailsPage
   ) {}
 
   ngOnInit() {
