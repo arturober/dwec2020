@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Add product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #productForm="ngForm" (ngSubmit)="addProduct()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-input name="description" required [(ngModel)]="newProd.description" #descModel="ngModel"></ion-input>
+        <ion-icon name="checkmark-circle" slot="end" color="success" *ngIf="descModel.dirty && descModel.valid"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Price</ion-label>
+        <ion-input type="number" min="0.00" step="0.01" name="price" required [(ngModel)]="newProd.price" #priceModel="ngModel"></ion-input>
+        <ion-icon name="checkmark-circle" slot="end" color="success" *ngIf="priceModel.dirty && priceModel.valid"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label position="inset">Photo</ion-label>
+        <ion-button color="secondary" (click)="takePhoto()">
+          <ion-icon name="camera" slot="start"></ion-icon>
+          Camera
+        </ion-button>
+        <ion-button color="tertiary" (click)="pickFromGallery()">
+          <ion-icon name="images" slot="start"></ion-icon>
+          Gallery
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    <ion-img [src]="newProd.imageUrl" *ngIf="newProd.imageUrl"></ion-img>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block" [disabled]="productForm.invalid || !newProd.imageUrl">
+            <ion-icon name="paper" slot="start"></ion-icon>
+            Add product
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button color="danger" expand="block" fill="outline" [routerLink]="['/products']" [routerDirection]="'root'">
+            <ion-icon name="undo" slot="start"></ion-icon>
+            Cancel
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
