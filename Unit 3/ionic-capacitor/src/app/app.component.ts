@@ -32,11 +32,11 @@ export class AppComponent implements OnInit {
       url: '/clipboard',
       icon: 'clipboard'
     },
-    {
-      title: 'Contacts',
-      url: '/contacts',
-      icon: 'people'
-    },
+    // {
+    //   title: 'Contacts',
+    //   url: '/contacts',
+    //   icon: 'people'
+    // },
     {
       title: 'Device Info',
       url: '/device',

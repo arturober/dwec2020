@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar></ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" (click)="addComment()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list>
+    <ion-item *ngFor="let com of comments">
+      <ion-avatar slot="start">
+        <ion-img [src]="com.user.avatar"></ion-img>
+      </ion-avatar>
+      <ion-label text-wrap>
+        <p>{{com.user.name}}</p>
+        <h4>{{com.text}}</h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "667204529710",
+    "firebase_url": "https://dwec2019.firebaseio.com",
+    "project_id": "dwec2019",
+    "storage_bucket": "dwec2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667204529710:android:760d74071bc440187f39bf",
+        "android_client_info": {
+          "package_name": "com.arturober.ionic.products"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667204529710-i40aumocig8havfkgmiuc6s1u9fjm757.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD13x0gj538dPKfCEuzPn3RW18OIMle6mI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667204529710-2b9jd5idoqepfe6ahpq3qo9kvtkmpdcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667204529710:android:cf1985c1c11af5057f39bf",
+        "android_client_info": {
+          "package_name": "com.arturober.products"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667204529710-i40aumocig8havfkgmiuc6s1u9fjm757.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD13x0gj538dPKfCEuzPn3RW18OIMle6mI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667204529710-2b9jd5idoqepfe6ahpq3qo9kvtkmpdcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
