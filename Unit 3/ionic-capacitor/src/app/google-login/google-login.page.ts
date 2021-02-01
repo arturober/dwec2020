@@ -17,7 +17,7 @@ export class GoogleLoginPage implements OnInit {
 
   async login() {
     try {
-      this.user = await Plugins.GoogleAuth.signIn();
+      this.user = await GoogleAuth.signIn();
     } catch (err) {
       console.error(err);
     }
