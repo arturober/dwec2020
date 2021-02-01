@@ -1,7 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 
-declare let window: any;
-
 @Component({
   selector: 'app-barcode',
   templateUrl: './barcode-scanner.page.html',
@@ -14,7 +12,7 @@ export class BarcodeScannerPage {
 
   async scan() {
     // this.data = (await this.bcScanner.scan()).text;
-    window.cordova.plugins.barcodeScanner.scan(
+    (window.cordova.plugins as any).barcodeScanner.scan(
       result => this.ngZone.run(() => this.data = result),
       err => console.error(err),
       {
